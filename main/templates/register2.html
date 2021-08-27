@@ -1,0 +1,42 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="stylesheet.css">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <title> NAME</title>
+</head>
+
+<body>
+    <p class="name1"> REGISTER</p>
+    <div class="main">
+    <p class="sign" align="center">Sign in/sign up to continue!</p>
+    <div class = "content-section">
+        <form method = "POST" action="">
+          {{ form.hidden_tag() }}
+          <fieldset class="form-group">
+          <div class = "form-group">
+            {{form.username.label(class="form-control-label")}}
+            {{form.username(class="form-control form-control-lg")}}
+          </div>
+          <div class = "form-group">
+            {{form.password.label(class="form-control-label")}}
+            {{form.password(class="form-control form-control-lg")}}
+          </div>
+        </fieldset>
+        <div class="form group">
+          {{form.signup_submit(class="btn btn-outline-info", value="Sign Up")}}
+        </div>
+        </form>
+    </div>
+</body>
+
+<!-- <form class="form1">
+  <input class="un " id = "username" type="text" align="center" placeholder="Username">
+  <input class="pass" id = "password" type="password" align="center" placeholder="Password">
+    <a class="submit" align="center" href="homepage.html">Sign in</a> <br> <br> <br>
+<a class="submit" align="center" href="homepage.html">Sign up</a>
+</form> -->
+
+</html>
