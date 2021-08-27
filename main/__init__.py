@@ -10,4 +10,4 @@ login_manager = LoginManager(app)
 login_manager.login_view = 'login'
 
 
-from flaskproj import routes
+from main import routes
