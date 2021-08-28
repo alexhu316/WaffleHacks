@@ -37,7 +37,7 @@ def register():
         return redirect(url_for('home'))
     form = RegisterAccount()
     if form.validate_on_submit():
-        user = User(username=form.username.data, password=form.password.data, type = request.form.get('type-select'))
+        user = User(username=form.username.data, password=form.password.data, user_type = str(request.form.get('type-select')))
         db.session.add(user)
         db.session.commit()
         login_user(user, remember=True)
@@ -68,5 +68,8 @@ def logout():
 
 
 @app.route("/account")
+@login_required
 def account():
     return render_template('account.html')
+
+
