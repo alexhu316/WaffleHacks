@@ -39,8 +39,8 @@ class UpdateSponseeInfo(FlaskForm):
     name=StringField('Organization Name', validators=[DataRequired(), Length(min=3)])
     email=StringField('Email', validators=[DataRequired(), Length(min=3)])
     phone=StringField('Phone Number', validators=[DataRequired(), Length(min=10)])
-    address=StringField('Address', validators=[DataRequired(), Length(min=3)])
-    website=StringField('Website', validators=[DataRequired()])
+    address=StringField('Address')
+    website=StringField('Website')
     description=StringField('Enter organization description', validators=[DataRequired()])
     submit = SubmitField("Save")
 
@@ -49,3 +49,7 @@ class PostForm(FlaskForm):
     title = StringField('Title', validators=[DataRequired()])
     description = StringField('Description', validators=[DataRequired()])
     submit_post = SubmitField("Post")
+
+
+class FilterSponsees(FlaskForm):
+    submit_filters = SubmitField("Filter")

@@ -2,6 +2,35 @@ from main import db, login_manager
 from datetime import datetime
 from flask_login import UserMixin
  
+
+def fits_criteria(checked_boxes, post):
+   if checked_boxes[0]:
+      if not post.education:
+         return False
+   if checked_boxes[1]:
+      if not post.technology:
+         return False
+   if checked_boxes[2]:
+      if not post.math:
+         return False
+   if checked_boxes[3]:
+      if not post.health:
+         return False
+   if checked_boxes[4]:
+      if not post.sports:
+         return False
+   if checked_boxes[5]:
+      if not post.gaming:
+         return False
+   if checked_boxes[6]:
+      if not post.leadership:
+         return False
+   if checked_boxes[7]:
+      if not post.business:
+         return False
+   return True
+   
+
  
 @login_manager.user_loader
 def load_user(user_id):
@@ -38,3 +67,11 @@ class Post(db.Model):
    description = db.Column(db.String(200),nullable = False)
    post_date = db.Column(db.DateTime, nullable = False, default = datetime.utcnow)
    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+   education = db.Column(db.Boolean)
+   technology = db.Column(db.Boolean)
+   mathematics = db.Column(db.Boolean)
+   health = db.Column(db.Boolean)
+   sports = db.Column(db.Boolean)
+   gaming = db.Column(db.Boolean)
+   leadership = db.Column(db.Boolean)
+   business = db.Column(db.Boolean)
