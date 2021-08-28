@@ -1,44 +1,33 @@
 from flask import render_template, url_for, redirect, flash, request
-from main.forms import RegisterAccount, LogInAccount, UpdateSponsorInfo, UpdateSponseeInfo
-from main.models import User
+from main.forms import RegisterAccount, LogInAccount, UpdateSponsorInfo, UpdateSponseeInfo, PostForm
+from main.models import User, Post
 from main import db
 from main import app
 from flask_login import login_user, current_user, logout_user, login_required
- 
-posts = [
-   {
-       'author': 'Alex Hu',
-       'title': 'Blog Post 1',
-       'content': "I'm awesome, I'm cool",
-       'date': 'August 19, 2021'
-   },
-   {
-       'author': 'Jennifer Ying',
-       'title': 'Blog Post 2',
-       'content': "I'm a stinky poo poo head",
-       'date': 'August 20, 2021'
-   }
-]
 
-all_users = db.session.query(User).all()
+
+all_users = User.query.all()
 
 
 
  
 @app.route("/", methods=['GET', 'POST'])
 def home():
+    posts = Post.query.all()
    # return redirect(url_for('register'))
-   return render_template("home.html", posts = posts)
+    return render_template("home.html", posts = posts)
  
  
 @app.route("/findsponsor")
 def findsponsor():
    return render_template('findsponsor.html', title='Find Sponsor')
 
+
 @app.route("/findsponsee")
 def findsponsee():
    return render_template('findsponsee.html', title='Find Sponsee')
  
+
 @app.route("/register", methods=['GET', 'POST'])
 def register():
    if current_user.is_authenticated:
@@ -106,12 +95,12 @@ def account_sponsor():
           user.business = True
       db.session.commit()
 
-  return render_template('account_sponsor.html',form = form)
+  return render_template('account_sponsor.html', form = form)
 
  
  
  
-@app.route("/account_sponsee")
+@app.route("/account_sponsee", methods=['GET', 'POST'])
 @login_required
 def account_sponsee():
    form = UpdateSponseeInfo()
@@ -145,7 +134,20 @@ def account_sponsee():
    return render_template('account_sponsee.html',form = form)
  
  
-@app.route("/find_sponsor")
+@app.route("/make_post", methods=['GET', 'POST'])
+@login_required
+def make_post():
+    form = PostForm()
+    if form.validate_on_submit():
+        post = Post(title = form.title.data, description = form.description.data, user_id = current_user.id)
+        db.session.add(post)
+        db.session.commit()
+
+
+    return render_template('make_post.html',form = form)
+
+
+@app.route("/find_sponsor", methods=['GET', 'POST'])
 @login_required
 def find_sponsors():
 

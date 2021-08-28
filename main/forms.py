@@ -1,4 +1,5 @@
 from flask_wtf import FlaskForm
+from flask_login import current_user
 from main.models import User
 from main import db
 from wtforms import StringField, PasswordField, SubmitField
@@ -16,7 +17,7 @@ class RegisterAccount(FlaskForm):
     
 
 class LogInAccount(FlaskForm):
-    username=StringField('Username', validators=[DataRequired(), Length(min=5, max=20)])
+    username=StringField('Username', validators=[DataRequired(), Length(min=4, max=20)])
     password=PasswordField('Password', validators=[DataRequired(), Length(min=1, max=20)])
 
     login_submit = SubmitField("Log In")
@@ -32,6 +33,7 @@ class UpdateSponsorInfo(FlaskForm):
     description=StringField('Enter business description', validators=[DataRequired()])
     submit = SubmitField("Save")
 
+
 class UpdateSponseeInfo(FlaskForm):
     interests = ['Education', 'Technology', 'Mathematics', 'Health', 'Physical Activity', 'Computers', 'Sports', 'Gaming', 'Leadership', 'Finance', 'Law', 'Business']
     name=StringField('Organization Name', validators=[DataRequired(), Length(min=3)])
@@ -41,3 +43,9 @@ class UpdateSponseeInfo(FlaskForm):
     website=StringField('Website', validators=[DataRequired()])
     description=StringField('Enter organization description', validators=[DataRequired()])
     submit = SubmitField("Save")
+
+
+class PostForm(FlaskForm):
+    title = StringField('Title', validators=[DataRequired()])
+    description = StringField('Description', validators=[DataRequired()])
+    submit_post = SubmitField("Post")
