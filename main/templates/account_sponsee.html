@@ -4,186 +4,197 @@
     <form method="POST" action="{{url_for('account_sponsor')}}">
         {{ form.csrf_token }}
         <fieldset class="form-group">
-            <legend class="border-bottom mb-4" style="font-size: xx-large;">{{current_user.username}}</legend>
-            <h3>You are a {{current_user.user_type}}</h3>
-            <p>Fill in the information below to complete your profile!</p>
-    <div class="form-group"
-        {{form.name.label(class="form-control-label")}}
-        {% if form.name.errors %}
-            {{ form.name(class="form-control form-control-lg is-invalid") }}
-            <div class="invalid-feedback">
-                {% for error in form.name.errors %}
-                    <span>{{ error }}</span>
-                {% endfor %}
+            <legend class="border-bottom mb-4" style="font-size: xx-large; font-weight: bolder; color: #234E70;">{{current_user.username}}</legend>
+            <h3 style="color:#234E70">You are a {{current_user.user_type}}</h3>
+            <p style="color:#234E70">Fill in the information below to complete your profile!</p>
+        <div class="countainer">
+            <div class="row">
+                <div class="col-6">
+                <div class="form-group">
+                    <h3 style="color: #234E70;font-size: 20px;">{{form.name.label(class="form-control-label")}}</h3>
+                    {% if form.name.errors %}
+                        {{ form.name(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.name.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.name(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                </div>
+                <div class="col-6">
+                <div class="form-group">
+                    <h3 style="color: #234E70;font-size: 20px;">{{form.email.label(class="form-control-label")}}</h3>
+                        {% if form.email.errors %}
+                            {{ form.email(class="form-control form-control-lg is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.email.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.email(class="form-control form-control-lg") }}
+                        {% endif %}
+                </div>
+                </div>
             </div>
-        {% else %}
-            {{ form.name(class="form-control form-control-lg") }}
-        {% endif %}
-   </div>
-   
-   <div class="form-group"
-        {{form.email.label(class="form-control-label")}}
-        {% if form.email.errors %}
-            {{ form.email(class="form-control form-control-lg is-invalid") }}
-            <div class="invalid-feedback">
-                {% for error in form.email.errors %}
-                    <span>{{ error }}</span>
-                {% endfor %}
+            <div class="row">
+                <div class="col-4">
+                <div class="form-group">
+                    <h3 style="color: #234E70;font-size: 20px;">{{form.phone.label(class="form-control-label")}}</h3>
+                        {% if form.phone.errors %}
+                            {{ form.phone(class="form-control form-control-lg is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.phone.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.phone(class="form-control form-control-lg") }}
+                        {% endif %}
+                </div>
+                </div>
+                <div class="col-8">
+                <div class="form-group">
+                    <h3 style="color: #234E70;font-size: 20px;">{{form.address.label(class="form-control-label")}}</h3>
+                        {% if form.address.errors %}
+                            {{ form.address(class="form-control form-control-lg is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.address.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.address(class="form-control form-control-lg") }}
+                        {% endif %}
+                </div>
+                </div>
             </div>
-        {% else %}
-            {{ form.email(class="form-control form-control-lg") }}
-        {% endif %}
-   </div>
+            <div class="row">
+                <div class="col-4">
+                        <div>
+                            <h3 style="color: #234E70;font-size: 20px;"> Interests</h3>
+                            <div class="form-check">
+                                {%if current_user.education%}
+                                <input class="form-check-input" type="checkbox" name="Education" id="flexCheckDefault" checked>
+                                {%else%}
+                                <input class="form-check-input" type="checkbox" name="Education" id="flexCheckDefault" >
+                                {%endif%}
+                                <label class="form-check-label" for="flexCheckDefault">
+                                Education
+                                </label>
+                            </div>
+                            <div class="form-check"> 
+                            {%if current_user.technology%}
+                                <input class="form-check-input" type="checkbox" name="Technology" id="flexCheckDefault" checked>
+                                {%else%}
+                                <input class="form-check-input" type="checkbox" name="Technology" id="flexCheckDefault" >
+                                {%endif%}
+                                <label class="form-check-label" for="flexCheckDefault">
+                                Technology
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                {%if current_user.mathematics%}
+                                <input class="form-check-input" type="checkbox" name="Mathematics" id="flexCheckDefault" checked>
+                                {%else%}
+                                <input class="form-check-input" type="checkbox" name="Mathematics" id="flexCheckDefault" >
+                                {%endif%}
+                                <label class="form-check-label" for="flexCheckDefault">
+                                Mathematics
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                {%if current_user.health%}
+                                <input class="form-check-input" type="checkbox" name="Health" id="flexCheckDefault" checked>
+                                {%else%}
+                                <input class="form-check-input" type="checkbox" name="Health" id="flexCheckDefault" >
+                                {%endif%}
+                                <label class="form-check-label" for="flexCheckDefault">
+                                Health
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                {%if current_user.sports%}
+                                <input class="form-check-input" type="checkbox" name="Sports" id="flexCheckDefault" checked>
+                                {%else%}
+                                <input class="form-check-input" type="checkbox" name="Sports" id="flexCheckDefault" >
+                                {%endif%}
+                                <label class="form-check-label" for="flexCheckDefault">
+                                Sports
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                {%if current_user.gaming%}
+                                <input class="form-check-input" type="checkbox" name="Gaming" id="flexCheckDefault" checked>
+                                {%else%}
+                                <input class="form-check-input" type="checkbox" name="Gaming" id="flexCheckDefault" >
+                                {%endif%}
+                                <label class="form-check-label" for="flexCheckDefault">
+                                Gaming
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                {%if current_user.leadership%}
+                                <input class="form-check-input" type="checkbox" name="Leadership" id="flexCheckDefault" checked>
+                                {%else%}
+                                <input class="form-check-input" type="checkbox" name="Leadership" id="flexCheckDefault" >
+                                {%endif%}
+                                <label class="form-check-label" for="flexCheckDefault">
+                                Leadership
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                {%if current_user.business%}
+                                <input class="form-check-input" type="checkbox" name="Business" id="flexCheckDefault" checked>
+                                {%else%}
+                                <input class="form-check-input" type="checkbox" name="Business" id="flexCheckDefault" >
+                                {%endif%}
+                                <label class="form-check-label" for="flexCheckDefault">
+                                Business
+                                </label>
+                            </div>
+                        </div>
+                
+                </div>
+                <div class="col-8">
+                        <div class="form-group">
+                        <h3 style="color: #234E70;font-size: 20px;">{{form.description.label(size=100, class="form-control-label")}}</h3>
+                        {% if form.description.errors %}
+                            {{ form.description(class="form-control form-control-lg is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.description.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.description(class="form-control form-control-lg") }}
+                        {% endif %}
+                        </div>
 
-   <div class="form-group"
-        {{form.phone.label(class="form-control-label")}}
-        {% if form.phone.errors %}
-            {{ form.phone(class="form-control form-control-lg is-invalid") }}
-            <div class="invalid-feedback">
-                {% for error in form.phone.errors %}
-                    <span>{{ error }}</span>
-                {% endfor %}
+                <div class="form-group">
+                    <h3 style="color: #234E70;font-size: 20px;">{{form.website.label(class="form-control-label")}}</h3>
+                            {% if form.website.errors %}
+                                {{ form.website(class="form-control form-control-lg is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.website.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.website(class="form-control form-control-lg") }}
+                            {% endif %}
+                </div>
+                </div>
             </div>
-        {% else %}
-            {{ form.phone(class="form-control form-control-lg") }}
-        {% endif %}
-   </div>
-
-   <div class="form-group"
-        {{form.address.label(class="form-control-label")}}
-        {% if form.address.errors %}
-            {{ form.address(class="form-control form-control-lg is-invalid") }}
-            <div class="invalid-feedback">
-                {% for error in form.address.errors %}
-                    <span>{{ error }}</span>
-                {% endfor %}
-            </div>
-        {% else %}
-            {{ form.address(class="form-control form-control-lg") }}
-        {% endif %}
-   </div>
-
-   <div>
-        <p> Interests</p>
-        <div class="form-check">
-            {%if current_user.education%}
-            <input class="form-check-input" type="checkbox" name="Education" id="flexCheckDefault" checked>
-            {%else%}
-            <input class="form-check-input" type="checkbox" name="Education" id="flexCheckDefault" >
-            {%endif%}
-            <label class="form-check-label" for="flexCheckDefault">
-            Education
-            </label>
-        </div>
-        <div class="form-check"> 
-        {%if current_user.technology%}
-            <input class="form-check-input" type="checkbox" name="Technology" id="flexCheckDefault" checked>
-            {%else%}
-            <input class="form-check-input" type="checkbox" name="Technology" id="flexCheckDefault" >
-            {%endif%}
-            <label class="form-check-label" for="flexCheckDefault">
-            Technology
-            </label>
-        </div>
-        <div class="form-check">
-            {%if current_user.mathematics%}
-            <input class="form-check-input" type="checkbox" name="Mathematics" id="flexCheckDefault" checked>
-            {%else%}
-            <input class="form-check-input" type="checkbox" name="Mathematics" id="flexCheckDefault" >
-            {%endif%}
-            <label class="form-check-label" for="flexCheckDefault">
-            Mathematics
-            </label>
-        </div>
-        <div class="form-check">
-            {%if current_user.health%}
-            <input class="form-check-input" type="checkbox" name="Health" id="flexCheckDefault" checked>
-            {%else%}
-            <input class="form-check-input" type="checkbox" name="Health" id="flexCheckDefault" >
-            {%endif%}
-            <label class="form-check-label" for="flexCheckDefault">
-            Health
-            </label>
-        </div>
-        <div class="form-check">
-            {%if current_user.sports%}
-            <input class="form-check-input" type="checkbox" name="Sports" id="flexCheckDefault" checked>
-            {%else%}
-            <input class="form-check-input" type="checkbox" name="Sports" id="flexCheckDefault" >
-            {%endif%}
-            <label class="form-check-label" for="flexCheckDefault">
-            Sports
-            </label>
-        </div>
-        <div class="form-check">
-            {%if current_user.gaming%}
-            <input class="form-check-input" type="checkbox" name="Gaming" id="flexCheckDefault" checked>
-            {%else%}
-            <input class="form-check-input" type="checkbox" name="Gaming" id="flexCheckDefault" >
-            {%endif%}
-            <label class="form-check-label" for="flexCheckDefault">
-            Gaming
-            </label>
-        </div>
-        <div class="form-check">
-            {%if current_user.leadership%}
-            <input class="form-check-input" type="checkbox" name="Leadership" id="flexCheckDefault" checked>
-            {%else%}
-            <input class="form-check-input" type="checkbox" name="Leadership" id="flexCheckDefault" >
-            {%endif%}
-            <label class="form-check-label" for="flexCheckDefault">
-            Leadership
-            </label>
-        </div>
-        <div class="form-check">
-            {%if current_user.business%}
-            <input class="form-check-input" type="checkbox" name="Business" id="flexCheckDefault" checked>
-            {%else%}
-            <input class="form-check-input" type="checkbox" name="Business" id="flexCheckDefault" >
-            {%endif%}
-            <label class="form-check-label" for="flexCheckDefault">
-            Business
-            </label>
-        </div>
-    </div>
-    <br>
-    <div class="form-group"
-        {{form.description.label(class="form-control-label")}}
-        {% if form.description.errors %}
-            {{ form.description(class="form-control form-control-lg is-invalid") }}
-            <div class="invalid-feedback">
-                {% for error in form.description.errors %}
-                    <span>{{ error }}</span>
-                {% endfor %}
-            </div>
-        {% else %}
-            {{ form.description(class="form-control form-control-lg") }}
-        {% endif %}
-   </div>
-
-   <div class="form-group"
-        {{form.website.label(class="form-control-label")}}
-        {% if form.website.errors %}
-            {{ form.website(class="form-control form-control-lg is-invalid") }}
-            <div class="invalid-feedback">
-                {% for error in form.website.errors %}
-                    <span>{{ error }}</span>
-                {% endfor %}
-            </div>
-        {% else %}
-            {{ form.website(class="form-control form-control-lg") }}
-        {% endif %}
-   </div>
-
-
+        </div>    
     <br>
     <div class="form-group">
         {{ form.submit(class="btn btn-outline-info") }}
-    </div> 
-
+    </div>
 </div>
-
-    
     </form>
 </div>
 {% endblock content %}
