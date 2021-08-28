@@ -1,5 +1,5 @@
 from flask import render_template, url_for, redirect, flash, request
-from main.forms import RegisterAccount, LogInAccount
+from main.forms import RegisterAccount, LogInAccount, UpdateSponsorAccount
 from main.models import User
 from main import db
 from main import app
@@ -76,6 +76,7 @@ def account_sponsor():
 @app.route("/account_sponsee")
 @login_required
 def account_sponsee():
+    form = UpdateSponsorInfo()
     return render_template('account_sponsee.html')
 
 
