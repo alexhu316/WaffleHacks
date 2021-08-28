@@ -66,49 +66,81 @@
    <div>
         <p> Interests</p>
         <div class="form-check">
-            <input class="form-check-input" type="checkbox" name="Education" id="flexCheckDefault">
+            {%if current_user.education%}
+            <input class="form-check-input" type="checkbox" name="Education" id="flexCheckDefault" checked>
+            {%else%}
+            <input class="form-check-input" type="checkbox" name="Education" id="flexCheckDefault" >
+            {%endif%}
             <label class="form-check-label" for="flexCheckDefault">
             Education
             </label>
         </div>
-        <div class="form-check">
-            <input class="form-check-input" type="checkbox" name="Technology" id="flexCheckDefault">
+        <div class="form-check"> 
+        {%if current_user.technology%}
+            <input class="form-check-input" type="checkbox" name="Technology" id="flexCheckDefault" checked>
+            {%else%}
+            <input class="form-check-input" type="checkbox" name="Technology" id="flexCheckDefault" >
+            {%endif%}
             <label class="form-check-label" for="flexCheckDefault">
             Technology
             </label>
         </div>
         <div class="form-check">
-            <input class="form-check-input" type="checkbox" name="Mathematics" id="flexCheckDefault">
+            {%if current_user.mathematics%}
+            <input class="form-check-input" type="checkbox" name="Mathematics" id="flexCheckDefault" checked>
+            {%else%}
+            <input class="form-check-input" type="checkbox" name="Mathematics" id="flexCheckDefault" >
+            {%endif%}
             <label class="form-check-label" for="flexCheckDefault">
             Mathematics
             </label>
         </div>
         <div class="form-check">
-            <input class="form-check-input" type="checkbox" name="Health" id="flexCheckDefault">
+            {%if current_user.health%}
+            <input class="form-check-input" type="checkbox" name="Health" id="flexCheckDefault" checked>
+            {%else%}
+            <input class="form-check-input" type="checkbox" name="Health" id="flexCheckDefault" >
+            {%endif%}
             <label class="form-check-label" for="flexCheckDefault">
             Health
             </label>
         </div>
         <div class="form-check">
-            <input class="form-check-input" type="checkbox" name="Sports" id="flexCheckDefault">
+            {%if current_user.sports%}
+            <input class="form-check-input" type="checkbox" name="Sports" id="flexCheckDefault" checked>
+            {%else%}
+            <input class="form-check-input" type="checkbox" name="Sports" id="flexCheckDefault" >
+            {%endif%}
             <label class="form-check-label" for="flexCheckDefault">
             Sports
             </label>
         </div>
         <div class="form-check">
-            <input class="form-check-input" type="checkbox" name="Gaming" id="flexCheckDefault">
+            {%if current_user.gaming%}
+            <input class="form-check-input" type="checkbox" name="Gaming" id="flexCheckDefault" checked>
+            {%else%}
+            <input class="form-check-input" type="checkbox" name="Gaming" id="flexCheckDefault" >
+            {%endif%}
             <label class="form-check-label" for="flexCheckDefault">
             Gaming
             </label>
         </div>
         <div class="form-check">
-            <input class="form-check-input" type="checkbox" name="Leadership" id="flexCheckDefault">
+            {%if current_user.leadership%}
+            <input class="form-check-input" type="checkbox" name="Leadership" id="flexCheckDefault" checked>
+            {%else%}
+            <input class="form-check-input" type="checkbox" name="Leadership" id="flexCheckDefault" >
+            {%endif%}
             <label class="form-check-label" for="flexCheckDefault">
             Leadership
             </label>
         </div>
         <div class="form-check">
-            <input class="form-check-input" type="checkbox" name="Business" id="flexCheckDefault">
+            {%if current_user.business%}
+            <input class="form-check-input" type="checkbox" name="Business" id="flexCheckDefault" checked>
+            {%else%}
+            <input class="form-check-input" type="checkbox" name="Business" id="flexCheckDefault" >
+            {%endif%}
             <label class="form-check-label" for="flexCheckDefault">
             Business
             </label>
