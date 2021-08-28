@@ -69,4 +69,4 @@ def logout():
 
 @app.route("/account")
 def account():
-    return redirect('account.html')
+    return render_template('account.html')
