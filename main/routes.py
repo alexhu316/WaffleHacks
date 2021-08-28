@@ -35,6 +35,10 @@ def findsponsor():
 def findsponsee():
    return render_template('findsponsee.html', title='Find Sponsee')
  
+@app.route("/make_post")
+def make_post():
+   return render_template('make_post.html', title='Make Post')
+
 @app.route("/register", methods=['GET', 'POST'])
 def register():
    if current_user.is_authenticated:

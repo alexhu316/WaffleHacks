@@ -1,5 +1,4 @@
 from flask_wtf import FlaskForm
-from flask_login import current_user
 from main.models import User
 from main import db
 from wtforms import StringField, PasswordField, SubmitField
@@ -26,7 +25,7 @@ class LogInAccount(FlaskForm):
 class UpdateSponsorInfo(FlaskForm):
     interests = ['Education', 'Technology', 'Mathematics', 'Health', 'Physical Activity', 'Computers', 'Sports', 'Gaming', 'Leadership', 'Finance', 'Law', 'Business']
     name=StringField('Business Name', validators=[DataRequired(), Length(min=3)])
-    email=StringField('Email', default = current_user.email, validators=[DataRequired(), Length(min=3)])
+    email=StringField('Email', validators=[DataRequired(), Length(min=3)])
     phone=StringField('Phone Number', validators=[DataRequired(), Length(min=10)])
     address=StringField('Address', validators=[DataRequired(), Length(min=3)])
     website=StringField('Website', validators=[DataRequired()])
