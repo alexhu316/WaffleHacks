@@ -1,5 +1,9 @@
 from flask import render_template, url_for, redirect, flash, request
+<<<<<<< Updated upstream
 from main.forms import RegisterAccount, LogInAccount, UpdateSponsorAccount
+=======
+from main.forms import RegisterAccount, LogInAccount, UpdateSponsorInfo
+>>>>>>> Stashed changes
 from main.models import User
 from main import db
 from main import app
@@ -70,7 +74,12 @@ def logout():
 @app.route("/account_sponsor")
 @login_required
 def account_sponsor():
-    return render_template('account_sponsor.html')
+   form = UpdateSponsorInfo()
+   if form.validate_on_submit():
+       pass
+  
+   return render_template('account_sponsor.html', form = form)
+
 
 
 @app.route("/account_sponsee")

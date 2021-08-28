@@ -23,8 +23,7 @@ class LogInAccount(FlaskForm):
 
 
 class UpdateSponsorInfo(FlaskForm):
-    interests = ['Education', 'Technology', 'Mathematics', 'Health', 'Physical Activity', 'Computers', 'Sports', 'Gaming',
-                        'Leadership', 'Finance', 'Law', 'Business']
+    interests = ['Education', 'Technology', 'Mathematics', 'Health', 'Physical Activity', 'Computers', 'Sports', 'Gaming', 'Leadership', 'Finance', 'Law', 'Business']
     name=StringField('Business Name', validators=[DataRequired(), Length(min=3)])
     email=StringField('Email', validators=[DataRequired(), Length(min=3)])
     address=StringField('Address', validators=[DataRequired(), Length(min=3)])
