@@ -33,9 +33,9 @@ class UpdateSponsorInfo(FlaskForm):
 
 class UpdateSponseeInfo(FlaskForm):
     interests = ['Education', 'Technology', 'Mathematics', 'Health', 'Physical Activity', 'Computers', 'Sports', 'Gaming', 'Leadership', 'Finance', 'Law', 'Business']
-    name=StringField('Business Name', validators=[DataRequired(), Length(min=3)])
+    name=StringField('Organization Name', validators=[DataRequired(), Length(min=3)])
     email=StringField('Email', validators=[DataRequired(), Length(min=3)])
     phone=StringField('Phone Number', validators=[DataRequired(), Length(min=10)])
     address=StringField('Address', validators=[DataRequired(), Length(min=3)])
-    description=StringField('Enter business description', validators=[DataRequired()])
+    description=StringField('Enter organization description', validators=[DataRequired()])
     submit = SubmitField("Save")
