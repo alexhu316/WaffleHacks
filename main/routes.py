@@ -27,10 +27,13 @@ def home():
    return render_template("home.html", posts = posts)
  
  
-@app.route("/about")
-def about():
-   return render_template('about.html', title='About')
- 
+@app.route("/findsponsor")
+def findsponsor():
+   return render_template('findsponsor.html', title='Find Sponsor')
+
+@app.route("/findsponsee")
+def findsponsee():
+   return render_template('findsponsee.html', title='Find Sponsee')
  
 @app.route("/register", methods=['GET', 'POST'])
 def register():

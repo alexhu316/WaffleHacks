@@ -2,6 +2,7 @@
 {% block content %}
 <div class="content-section">
     <form method="POST" action="{{url_for('account_sponsor')}}">
+        {{ form.csrf_token }}
         <fieldset class="form-group">
             <legend class="border-bottom mb-4" style="font-size: xx-large;">{{current_user.username}}</legend>
             <h3>You are a {{current_user.user_type}}</h3>
