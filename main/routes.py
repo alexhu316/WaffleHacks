@@ -67,9 +67,15 @@ def logout():
     return redirect(url_for('home'))
 
 
-@app.route("/account")
+@app.route("/account_sponsor")
 @login_required
-def account():
-    return render_template('account.html')
+def account_sponsor():
+    return render_template('account_sponsor.html')
+
+
+@app.route("/account_sponsee")
+@login_required
+def account_sponsee():
+    return render_template('account_sponsee.html')
 
 

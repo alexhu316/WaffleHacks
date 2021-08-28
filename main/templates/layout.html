@@ -27,11 +27,11 @@
             <!-- Navbar Right Side -->
             <div class="navbar-nav">
               {% if current_user.is_authenticated %}
-                {% if current_user.user_type == "Sponsee"%}
-                <a class="nav-item nav-link" style="color: #FBF8BE;" href="{{ url_for('account-sponsee') }}">Account</a>
+                {% if current_user.user_type == "Sponsor"%}
+                <a class="nav-item nav-link" style="color: #FBF8BE;" href="{{ url_for('account_sponsor') }}">Account</a>
                 <a class="nav-item nav-link" style="color: #FBF8BE;" href="{{ url_for('logout') }}">Logout</a>
                 {%else%}
-                <a class="nav-item nav-link" style="color: #FBF8BE;" href="{{ url_for('account-sponsor') }}">Account</a>
+                <a class="nav-item nav-link" style="color: #FBF8BE;" href="{{ url_for('account_sponsee') }}">Account</a>
                 <a class="nav-item nav-link" style="color: #FBF8BE;" href="{{ url_for('logout') }}">Logout</a>
                 {%endif%}
               {% else %}
