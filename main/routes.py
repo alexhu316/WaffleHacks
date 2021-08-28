@@ -1,9 +1,5 @@
 from flask import render_template, url_for, redirect, flash, request
-<<<<<<< Updated upstream
-from main.forms import RegisterAccount, LogInAccount, UpdateSponsorAccount
-=======
 from main.forms import RegisterAccount, LogInAccount, UpdateSponsorInfo
->>>>>>> Stashed changes
 from main.models import User
 from main import db
 from main import app
