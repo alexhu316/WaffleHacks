@@ -7,7 +7,6 @@ from main import app
 from flask_login import login_user, current_user, logout_user, login_required
 
 
-all_users = User.query.all()
 
 
 @app.route("/", methods=['GET', 'POST'])
@@ -26,6 +25,7 @@ def register():
        db.session.commit()
        login_user(user, remember=True)
        all_users = User.query.all()
+       flash("You have registered!")
        return redirect(url_for('account'))
  
    return render_template("register.html", form = form)
@@ -40,6 +40,7 @@ def login():
        user = User.query.filter_by(username = form.username.data).first()
        if user and user.password == form.password.data:
            login_user(user, remember=True)
+           flash("You have logged in!")
            return redirect(url_for('home'))
        else:
            flash("Incorrect username/password")
@@ -49,6 +50,7 @@ def login():
 @app.route("/logout")
 def logout():
    logout_user()
+   flash("You have signed out!")
    return redirect(url_for('home'))
 
 
@@ -191,6 +193,7 @@ def make_post():
 @app.route("/find_sponsors", methods=['GET', 'POST'])
 @login_required
 def find_sponsors():
+    all_users = User.query.all()
     return render_template('find_sponsors.html', users = all_users)
 
 
@@ -201,24 +204,39 @@ def find_sponsees():
       posts = Post.query.all()
       sorted_posts = sorted(posts, key=lambda by_date: by_date.post_date, reverse=True)
       if form.validate_on_submit():
+          num_checked = 0
           checked = [False for i in range(8)]
           if request.form.get('Education'):
               checked[0]=True
+              num_checked+=1
           if request.form.get('Technology'):
               checked[1]=True
+              num_checked+=1
           if request.form.get('Mathematics'):
               checked[2]=True
+              num_checked+=1
           if request.form.get('Health'):
               checked[3]=True
+              num_checked+=1
           if request.form.get('Sports'):
               checked[4]=True
+              num_checked+=1
           if request.form.get('Gaming'):
               checked[5]=True
+              num_checked+=1
           if request.form.get('Leadership'):
               checked[6]=True
+              num_checked+=1
           if request.form.get('Business'):
               checked[7]=True
-          filtered_posts = (post for post in posts if fits_criteria(checked, post) )
-          sorted_posts = sorted(posts, key=lambda by_date: by_date.post_date, reverse=True)
-          return render_template('find_sponsees.html', form = form, posts = sorted_posts)
+              num_checked+=1
+          
+          if num_checked==0:
+            sorted_posts = sorted(posts, key=lambda by_date: by_date.post_date, reverse=True)
+            return render_template('find_sponsees.html', form = form, posts = sorted_posts)
+          else:
+            filtered_posts = []
+            for i in range(num_checked+1,0,-1):
+                filtered_posts.append(post for post in posts if fits_criteria(checked, post)==num_checked)
+          return render_template('find_sponsees.html', form = form, posts = filtered_posts)
       return render_template('find_sponsees.html', form = form, posts = sorted_posts)

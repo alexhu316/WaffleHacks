@@ -4,31 +4,32 @@ from flask_login import UserMixin
  
 
 def fits_criteria(checked_boxes, post):
+   matches = 0
    if checked_boxes[0]:
-      if not post.education:
-         return False
+      if post.education:
+         matches+=1
    if checked_boxes[1]:
-      if not post.technology:
-         return False
+      if post.technology:
+         matches+=1
    if checked_boxes[2]:
-      if not post.math:
-         return False
+      if post.math:
+         matches+=1
    if checked_boxes[3]:
-      if not post.health:
-         return False
+      if post.health:
+         matches+=1
    if checked_boxes[4]:
-      if not post.sports:
-         return False
+      if post.sports:
+         matches+=1
    if checked_boxes[5]:
-      if not post.gaming:
-         return False
+      if post.gaming:
+         matches+=1
    if checked_boxes[6]:
-      if not post.leadership:
-         return False
+      if post.leadership:
+         matches+=1
    if checked_boxes[7]:
-      if not post.business:
-         return False
-   return True
+      if post.business:
+         matches+=1
+   return matches
    
 
  
