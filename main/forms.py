@@ -38,5 +38,6 @@ class UpdateSponseeInfo(FlaskForm):
     email=StringField('Email', validators=[DataRequired(), Length(min=3)])
     phone=StringField('Phone Number', validators=[DataRequired(), Length(min=10)])
     address=StringField('Address', validators=[DataRequired(), Length(min=3)])
+    website=StringField('Website', validators=[DataRequired()])
     description=StringField('Enter organization description', validators=[DataRequired()])
     submit = SubmitField("Save")
