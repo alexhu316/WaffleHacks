@@ -74,7 +74,7 @@ def account_sponsor():
    if form.validate_on_submit():
        pass
   
-   return render_template('account_sponsor.html', form = form)
+   return render_template('account_sponsor.html',form = form)
 
 
 
