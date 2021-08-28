@@ -1,3 +1,4 @@
+from datetime import datetime
 from flask import render_template, url_for, redirect, flash, request
 from main.forms import RegisterAccount, LogInAccount, UpdateSponsorInfo, UpdateSponseeInfo, PostForm
 from main.models import User, Post
@@ -13,19 +14,8 @@ all_users = User.query.all()
  
 @app.route("/", methods=['GET', 'POST'])
 def home():
-    posts = Post.query.all()
-   # return redirect(url_for('register'))
-    return render_template("home.html", posts = posts)
- 
- 
-@app.route("/findsponsor")
-def findsponsor():
-   return render_template('findsponsor.html', title='Find Sponsor')
-
-
-@app.route("/findsponsee")
-def findsponsee():
-   return render_template('findsponsee.html', title='Find Sponsee')
+   
+    return render_template("home.html")
  
 
 @app.route("/register", methods=['GET', 'POST'])
@@ -143,17 +133,22 @@ def make_post():
         db.session.add(post)
         db.session.commit()
 
-
     return render_template('make_post.html',form = form)
 
 
-@app.route("/find_sponsor", methods=['GET', 'POST'])
+@app.route("/find_sponsors", methods=['GET', 'POST'])
 @login_required
 def find_sponsors():
+    return render_template('find_sponsors.html', users = all_users)
 
 
-    return render_template('findsponsor.html', users = all_users)
-
+@app.route("/find_sponsees", methods=['GET', 'POST'])
+@login_required
+def find_sponsees():
+      posts = Post.query.all()
+      sorted_posts = sorted(posts, key=lambda by_date: by_date.post_date, reverse=True)
+      return render_template('find_sponsees.html', posts = sorted_posts)
+  
 # {%for user in users}
 # {%if user.user_type == 'Sponsor'}
 #     <h1>user.name</h1>
