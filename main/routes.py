@@ -26,7 +26,7 @@ def register():
        db.session.commit()
        login_user(user, remember=True)
        all_users = User.query.all()
-       return redirect(url_for('home'))
+       return redirect(url_for('account'))
  
    return render_template("register.html", form = form)
  
@@ -50,6 +50,16 @@ def login():
 def logout():
    logout_user()
    return redirect(url_for('home'))
+
+
+@app.route("/account", methods=['GET', 'POST'])
+@login_required
+def account():
+    if current_user.user_type=='Sponsor':
+        return redirect(url_for('account_sponsor'))
+    else:
+        return redirect(url_for('account_sponsee'))
+
  
  
 @app.route("/account_sponsor", methods=['GET', 'POST'])
