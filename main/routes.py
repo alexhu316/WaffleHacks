@@ -20,6 +20,10 @@ posts = [
    }
 ]
 
+all_users = db.session.query(User).all()
+
+
+
  
 @app.route("/", methods=['GET', 'POST'])
 def home():
@@ -35,10 +39,6 @@ def findsponsor():
 def findsponsee():
    return render_template('findsponsee.html', title='Find Sponsee')
  
-@app.route("/make_post")
-def make_post():
-   return render_template('make_post.html', title='Make Post')
-
 @app.route("/register", methods=['GET', 'POST'])
 def register():
    if current_user.is_authenticated:
@@ -145,3 +145,17 @@ def account_sponsee():
    return render_template('account_sponsee.html',form = form)
  
  
+@app.route("/find_sponsor")
+@login_required
+def find_sponsors():
+
+
+    return render_template('findsponsor.html', users = all_users)
+
+# {%for user in users}
+# {%if user.user_type == 'Sponsor'}
+#     <h1>user.name</h1>
+#     <h1>user.phone</h1>
+#     <h1>user.address</h1>
+# {%endif%}
+# {%endfor%}
