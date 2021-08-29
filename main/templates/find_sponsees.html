@@ -2,6 +2,8 @@
 {% block content %}
     <h1>Find your next sponsee!</h1>
     <p> Check out upcoming events and discover new organizations that you would like to sponsor!</p>
+    <form method="POST" action="{{url_for('find_sponsees')}}">
+      {{ form.csrf_token }}    
     <div class="content-section">
       <div class="row" style="vertical-align: middle;">
         <div class="col-11" style="padding-top: 8px;">
@@ -45,6 +47,7 @@
         </div>
       </div>
     </div>
+    </form>
     
     {% for post in posts %}
         <article class="media content-section">
@@ -72,5 +75,6 @@
             <p class="article-content">{{ post.description }}</p>
           </div>
         </article>
+      
     {% endfor %}
 {% endblock content %}

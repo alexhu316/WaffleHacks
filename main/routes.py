@@ -275,6 +275,8 @@ def find_sponsees():
           else:
             filtered_posts = []
             for i in range(num_checked+1,0,-1):
-                filtered_posts.append(post for post in posts if fits_criteria_post(checked, post)==num_checked)
+                for post in sorted_posts:
+                    if (fits_criteria_post(checked, post)==i):
+                        filtered_posts.append(post)
           return render_template('find_sponsees.html', form = form, posts = filtered_posts)
       return render_template('find_sponsees.html', form = form, posts = sorted_posts)
