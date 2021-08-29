@@ -52,16 +52,6 @@ def logout():
    logout_user()
    flash("You have signed out!")
    return redirect(url_for('home'))
-
-
-@app.route("/account", methods=['GET', 'POST'])
-@login_required
-def account():
-    if current_user.user_type=='Sponsor':
-        return redirect(url_for('account_sponsor'))
-    else:
-        return redirect(url_for('account_sponsee'))
-
  
  
 @app.route("/account_sponsor", methods=['GET', 'POST'])
@@ -160,6 +150,17 @@ def account_sponsee():
     return render_template('account_sponsee.html', form = form)
  
  
+
+@app.route("/account", methods=['GET', 'POST'])
+@login_required
+def account():
+    if current_user.user_type=='Sponsor':
+        return redirect(url_for('account_sponsor'))
+    else:
+        return redirect(url_for('account_sponsee'))
+
+
+
 @app.route("/make_post", methods=['GET', 'POST'])
 @login_required
 def make_post():
