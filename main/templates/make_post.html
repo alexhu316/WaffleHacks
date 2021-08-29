@@ -4,88 +4,99 @@
         <form method="POST" action="">
             {{ form.hidden_tag() }}
             <fieldset class="form-group">
-                <legend class="border-bottom mb-4">Make Post</legend>
-                <div class="form-group">
-                    {{ form.title.label(class="form-control-label") }}
-                    {% if form.title.errors %}
-                        {{ form.title(class="form-control form-control-lg is-invalid") }}
-                        <div class="invalid-feedback">
-                            {% for error in form.title.errors %}
-                                <span>{{ error }}</span>
-                            {% endfor %}
+                <legend class="border-bottom mb-4" style="font-size: xx-large; font-weight: bolder; color: #234E70;">Make Post</legend>
+                <div class="row">
+                    <div class="col-9">
+                        <div class="form-group" style="color:#234E70; font-size: x-large; ">
+                            {{ form.title.label(class="form-control-label") }}
+                            {% if form.title.errors %}
+                                {{ form.title(class="form-control form-control-lg is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.title.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.title(class="form-control form-control-lg") }}
+                            {% endif %}
                         </div>
-                    {% else %}
-                        {{ form.title(class="form-control form-control-lg") }}
-                    {% endif %}
-                </div>
-                <div class="form-group">
-                    {{ form.description.label(class="form-control-label") }}
-                    {% if form.description.errors %}
-                        {{ form.description(class="form-control form-control-lg is-invalid") }}
-                        <div class="invalid-feedback">
-                            {% for error in form.description.errors %}
-                                <span>{{ error }}</span>
-                            {% endfor %}
+                        <div class="form-group" style="color:#234E70; font-size: x-large;">
+                            {{ form.description.label(class="form-control-label") }}
+                            {% if form.description.errors %}
+                                {{ form.description(class="form-control form-control-lg is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.description.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.description(class="form-control form-control-lg") }}
+                            {% endif %}
                         </div>
-                    {% else %}
-                        {{ form.description(class="form-control form-control-lg") }}
-                    {% endif %}
+                    </div>
+                    <div class="col-3">
+                        <div>
+                            <p style="color:#234E70; font-size: x-large; "> Categories</p>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Education" id="flexCheckDefault" >
+                                <label class="form-check-label" for="flexCheckDefault">
+                                Education
+                                </label>
+                            </div>
+                            <div class="form-check"> 
+                                <input class="form-check-input" type="checkbox" name="Technology" id="flexCheckDefault" >
+                                <label class="form-check-label" for="flexCheckDefault">
+                                Technology
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Mathematics" id="flexCheckDefault" >
+                                <label class="form-check-label" for="flexCheckDefault">
+                                Mathematics
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Health" id="flexCheckDefault" >
+                                <label class="form-check-label" for="flexCheckDefault">
+                                Health
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Sports" id="flexCheckDefault" >
+                                <label class="form-check-label" for="flexCheckDefault">
+                                Sports
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Gaming" id="flexCheckDefault" >
+                                <label class="form-check-label" for="flexCheckDefault">
+                                Gaming
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Leadership" id="flexCheckDefault" >
+                                <label class="form-check-label" for="flexCheckDefault">
+                                Leadership
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Business" id="flexCheckDefault" >
+                                <label class="form-check-label" for="flexCheckDefault">
+                                Business
+                                </label>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+                
             </fieldset>
             
-            <div>
-                <p> Categories</p>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="Education" id="flexCheckDefault" >
-                    <label class="form-check-label" for="flexCheckDefault">
-                    Education
-                    </label>
-                </div>
-                <div class="form-check"> 
-                    <input class="form-check-input" type="checkbox" name="Technology" id="flexCheckDefault" >
-                    <label class="form-check-label" for="flexCheckDefault">
-                    Technology
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="Mathematics" id="flexCheckDefault" >
-                    <label class="form-check-label" for="flexCheckDefault">
-                    Mathematics
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="Health" id="flexCheckDefault" >
-                    <label class="form-check-label" for="flexCheckDefault">
-                    Health
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="Sports" id="flexCheckDefault" >
-                    <label class="form-check-label" for="flexCheckDefault">
-                    Sports
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="Gaming" id="flexCheckDefault" >
-                    <label class="form-check-label" for="flexCheckDefault">
-                    Gaming
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="Leadership" id="flexCheckDefault" >
-                    <label class="form-check-label" for="flexCheckDefault">
-                    Leadership
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="Business" id="flexCheckDefault" >
-                    <label class="form-check-label" for="flexCheckDefault">
-                    Business
-                    </label>
-                </div>
-            </div>
+            
+
             <div class="form-group">
+                <div style="padding-left: 48%;">
                 {{ form.submit_post(class="btn btn-outline-info") }}
+                </div>
             </div>
         </form>
     </div>
