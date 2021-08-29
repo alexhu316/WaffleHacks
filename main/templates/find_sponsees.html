@@ -12,7 +12,16 @@
                 <small class="text-muted">{{ post.post_date.strftime('%Y-%m-%d') }}</small>
               </div>
               <div class="col-6">
-                <small class="text-muted">Categories: {%if post.education%} Education {%endif%}</small>
+                <small class="text-muted">Categories: 
+                  {%if post.education%} Education. {%endif%}
+                  {%if post.technology%} Technology. {%endif%}
+                  {%if post.mathematics%} Mathematics. {%endif%}
+                  {%if post.health%} Health. {%endif%}
+                  {%if post.sports%} Sports. {%endif%}
+                  {%if post.gaming%} Gaming. {%endif%}
+                  {%if post.leadership%} Leadership. {%endif%}
+                  {%if post.business%} Business. {%endif%}
+                </small>
               </div>
             </div>
             <h2><a class="article-title" href="#">{{ post.title }}</a></h2>

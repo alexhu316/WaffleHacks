@@ -185,8 +185,6 @@ def make_post():
         db.session.add(post)
         db.session.commit()
         return redirect(url_for('find_sponsees'))
-
-
     return render_template('make_post.html',form = form)
 
 
