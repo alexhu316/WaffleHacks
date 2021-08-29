@@ -1,7 +1,8 @@
 {% extends "layout.html" %}
 {% block content %}
-    <h1>Find sponsors for your events!</h1>
-    <p> Check out these potential sponsors for ones that fit with your event.</p>
+    <h1 style="color:#234E70; text-align: center;" >Find sponsors for your events!</h1>
+    <p style="color:#234E70; text-align: center;"> Check out these potential sponsors for ones that fit with your event.</p>
+    <br>
 <form method="POST" action="{{url_for('find_sponsors')}}">
     {{ form.csrf_token }}    
     <div class="content-section">
@@ -9,39 +10,39 @@
         <div class="col-11" style="padding-top: 8px;">
           <div class="form-check form-check-inline">
             <input class="form-check-input" type="checkbox" name="Education">
-            <label class="form-check-label" for="Education">Education</label>
+            <label class="form-check-label" for="Education" style="color:#234E70">Education</label>
           </div>
           <div class="form-check form-check-inline">
             <input class="form-check-input" type="checkbox" name="Technology">
-            <label class="form-check-label" for="Technology">Technology</label>
+            <label class="form-check-label" for="Technology" style="color:#234E70">Technology</label>
           </div>
           <div class="form-check form-check-inline">
             <input class="form-check-input" type="checkbox" name="Mathematics">
-            <label class="form-check-label" for="Mathematics">Mathematics</label>
+            <label class="form-check-label" for="Mathematics" style="color:#234E70">Mathematics</label>
           </div>
           <div class="form-check form-check-inline">
             <input class="form-check-input" type="checkbox" name="Health">
-            <label class="form-check-label" for="Health">Health</label>
+            <label class="form-check-label" for="Health" style="color:#234E70">Health</label>
           </div>
           <div class="form-check form-check-inline">
             <input class="form-check-input" type="checkbox" name="Sports">
-            <label class="form-check-label" for="Sports">Sports</label>
+            <label class="form-check-label" for="Sports" style="color:#234E70">Sports</label>
           </div>
           <div class="form-check form-check-inline">
             <input class="form-check-input" type="checkbox" name="Gaming">
-            <label class="form-check-label" for="Gaming">Gaming</label>
+            <label class="form-check-label" for="Gaming" style="color:#234E70">Gaming</label>
           </div>
           <div class="form-check form-check-inline">
             <input class="form-check-input" type="checkbox" name="Leadership">
-            <label class="form-check-label" for="Leadership">Leadership</label>
+            <label class="form-check-label" for="Leadership" style="color:#234E70">Leadership</label>
           </div>
           <div class="form-check form-check-inline">
             <input class="form-check-input" type="checkbox" name="Business">
-            <label class="form-check-label" for="Business">Business</label>
+            <label class="form-check-label" for="Business" style="color:#234E70">Business</label>
           </div>
         </div>
         <div class="col-1">
-          <div class="form-group" >
+          <div class="form-group" style="color:#234E70" >
             {{ form.submit_filters(class="btn btn-outline-info") }}
           </div>
         </div>
@@ -56,11 +57,10 @@
             <div class="article-metadata">
               <div class="row">
               <div class="col-6">
-                <a class="mr-2" href="#">{{ user.name }}</a>
-                <small class="text-muted">{{ user.number }}</small>
+                <p href="#" style="color:#234E70">{{ user.address }}</p>
               </div>
               <div class="col-6">
-                <small class="text-muted">Categories: 
+                <p class="text-muted" style="color:#234E70">Categories: 
                   {%if user.education%} Education. {%endif%}
                   {%if user.technology%} Technology. {%endif%}
                   {%if user.mathematics%} Mathematics. {%endif%}
@@ -69,11 +69,22 @@
                   {%if user.gaming%} Gaming. {%endif%}
                   {%if user.leadership%} Leadership. {%endif%}
                   {%if user.business%} Business. {%endif%}
-                </small>
+                </p>
               </div>
             </div>
-            <h2><a class="article-title" href="#">{{ user.address }}</a></h2>
-            <p class="article-content">{{ user.description }}</p>
+            <h2 class="article-title" style="color:#234E70">{{ user.name }}<hr></h2>
+            <div class="row">
+              <div class="col-8" style="color:#234E70">
+                <h3 style="color:#234E70">Who are we:</h3>
+                <p class="article-content" style="color:#234E70">{{ user.description }}</p>
+              </div>
+              <div class="col-4">
+                <h3 style="color:#234E70">Contact us:</h3>
+                <p class="article-content" style="color:#234E70">Phone: {{ user.phone }}</p>
+                <p class="article-content" style="color:#234E70">Email: {{ user.email }}</p>
+                <p class="article-content" style="color:#234E70">Website: {{ user.website }}</p>
+              </div>
+            </div>
           </div>
         </article>
         {%endif%}

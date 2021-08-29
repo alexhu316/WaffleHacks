@@ -7,9 +7,11 @@
                 <legend class="border-bottom mb-4" style="font-size: xx-large; font-weight: bolder; color: #234E70;">{{current_user.username}}</legend>
                 <h3 style="color:#234E70">You are a {{current_user.user_type}}</h3>
                 <p style="color:#234E70">Fill in the information below to complete your profile!</p>
+                <hr>
             <div class="countainer">
+                    <br>
                 <div class="row">
-                    <div class="col-6">
+                    <div class="col-4">
                     <div class="form-group">
                         <h3 style="color: #234E70;font-size: 20px;">{{form.name.label(class="form-control-label")}}</h3>
                         {% if form.name.errors %}
@@ -24,8 +26,26 @@
                         {% endif %}
                     </div>
                     </div>
-                    <div class="col-6">
+                    <div class="col-8">
                     <div class="form-group">
+                        <h3 style="color: #234E70;font-size: 20px;">{{form.description.label(class="form-control-label")}}</h3>
+                        {% if form.description.errors %}
+                            {{ form.description(class="form-control form-control-lg is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.description.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.description(class="form-control form-control-lg") }}
+                        {% endif %}
+                    </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                    <div class="form-group">
+                        
                         <h3 style="color: #234E70;font-size: 20px;">{{form.email.label(class="form-control-label")}}</h3>
                             {% if form.email.errors %}
                                 {{ form.email(class="form-control form-control-lg is-invalid") }}
@@ -36,23 +56,6 @@
                                 </div>
                             {% else %}
                                 {{ form.email(class="form-control form-control-lg") }}
-                            {% endif %}
-                    </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-4">
-                    <div class="form-group">
-                        <h3 style="color: #234E70;font-size: 20px;">{{form.phone.label(class="form-control-label")}}</h3>
-                            {% if form.phone.errors %}
-                                {{ form.phone(class="form-control form-control-lg is-invalid") }}
-                                <div class="invalid-feedback">
-                                    {% for error in form.phone.errors %}
-                                        <span>{{ error }}</span>
-                                    {% endfor %}
-                                </div>
-                            {% else %}
-                                {{ form.phone(class="form-control form-control-lg") }}
                             {% endif %}
                     </div>
                     </div>
@@ -161,16 +164,17 @@
                     </div>
                     <div class="col-8">
                             <div class="form-group">
-                            <h3 style="color: #234E70;font-size: 20px;">{{form.description.label(class="form-control-label")}}</h3>
-                            {% if form.description.errors %}
-                                {{ form.description(class="form-control form-control-lg is-invalid") }}
+                           
+                            <h3 style="color: #234E70;font-size: 20px;">{{form.phone.label(class="form-control-label")}}</h3>
+                            {% if form.phone.errors %}
+                                {{ form.phone(class="form-control form-control-lg is-invalid") }}
                                 <div class="invalid-feedback">
-                                    {% for error in form.description.errors %}
+                                    {% for error in form.phone.errors %}
                                         <span>{{ error }}</span>
                                     {% endfor %}
                                 </div>
                             {% else %}
-                                {{ form.description(class="form-control form-control-lg") }}
+                                {{ form.phone(class="form-control form-control-lg") }}
                             {% endif %}
                             </div>
 
@@ -191,7 +195,7 @@
                 </div>
             </div>    
         <br>
-        <div class="form-group">
+        <div class="form-group" style="padding-left: 48%;">
             {{ form.submit(class="btn btn-outline-info") }}
         </div>
     </div>
