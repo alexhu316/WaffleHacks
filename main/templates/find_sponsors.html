@@ -1,4 +1,32 @@
 {% extends "layout.html" %}
 {% block content %}
-    <h1>find sponsore</h1>
+    <h1>Find sponsors for your events!</h1>
+    <p> Check out these potential sponsors for ones that fit with your event.</p>
+    {% for user in users %}
+        <article class="media content-section">
+          <div class="media-body">
+            <div class="article-metadata">
+              <div class="row">
+              <div class="col-6">
+                <a class="mr-2" href="#">{{ user.name }}</a>
+                <small class="text-muted">{{ user.number }}</small>
+              </div>
+              <div class="col-6">
+                <small class="text-muted">Categories: 
+                  {%if user.education%} Education. {%endif%}
+                  {%if user.technology%} Technology. {%endif%}
+                  {%if user.mathematics%} Mathematics. {%endif%}
+                  {%if user.health%} Health. {%endif%}
+                  {%if user.sports%} Sports. {%endif%}
+                  {%if user.gaming%} Gaming. {%endif%}
+                  {%if user.leadership%} Leadership. {%endif%}
+                  {%if user.business%} Business. {%endif%}
+                </small>
+              </div>
+            </div>
+            <h2><a class="article-title" href="#">{{ user.address }}</a></h2>
+            <p class="article-content">{{ user.description }}</p>
+          </div>
+        </article>
+    {% endfor %}
 {% endblock content %}

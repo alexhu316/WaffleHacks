@@ -185,14 +185,16 @@ def make_post():
         db.session.add(post)
         db.session.commit()
         return redirect(url_for('find_sponsees'))
-    return render_template('make_post.html',form = form)
+    return render_template('make_post.html', form = form)
 
 
 @app.route("/find_sponsors", methods=['GET', 'POST'])
 @login_required
 def find_sponsors():
     all_users = User.query.all()
-    return render_template('find_sponsors.html', users = all_users)
+
+
+    return render_template('find_sponsors.html', users = all_users[::-1])
 
 
 @app.route("/find_sponsees", methods=['GET', 'POST'])
