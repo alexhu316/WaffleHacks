@@ -2,6 +2,50 @@
 {% block content %}
     <h1>Find your next sponsee!</h1>
     <p> Check out upcoming events and discover new organizations that you would like to sponsor!</p>
+    <div class="content-section">
+      <div class="row" style="vertical-align: middle;">
+        <div class="col-11" style="padding-top: 8px;">
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" name="Education">
+            <label class="form-check-label" for="Education">Education</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" name="Technology">
+            <label class="form-check-label" for="Technology">Technology</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" name="Mathematics">
+            <label class="form-check-label" for="Mathematics">Mathematics</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" name="Health">
+            <label class="form-check-label" for="Health">Health</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" name="Sports">
+            <label class="form-check-label" for="Sports">Sports</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" name="Gaming">
+            <label class="form-check-label" for="Gaming">Gaming</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" name="Leadership">
+            <label class="form-check-label" for="Leadership">Leadership</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" name="Business">
+            <label class="form-check-label" for="Business">Business</label>
+          </div>
+        </div>
+        <div class="col-1">
+          <div class="form-group" >
+            {{ form.submit_filters(class="btn btn-outline-info") }}
+          </div>
+        </div>
+      </div>
+    </div>
+    
     {% for post in posts %}
         <article class="media content-section">
           <div class="media-body">
