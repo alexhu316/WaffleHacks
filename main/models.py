@@ -3,34 +3,6 @@ from datetime import datetime
 from flask_login import UserMixin
  
 
-def fits_criteria(checked_boxes, post):
-   matches = 0
-   if checked_boxes[0]:
-      if post.education:
-         matches+=1
-   if checked_boxes[1]:
-      if post.technology:
-         matches+=1
-   if checked_boxes[2]:
-      if post.math:
-         matches+=1
-   if checked_boxes[3]:
-      if post.health:
-         matches+=1
-   if checked_boxes[4]:
-      if post.sports:
-         matches+=1
-   if checked_boxes[5]:
-      if post.gaming:
-         matches+=1
-   if checked_boxes[6]:
-      if post.leadership:
-         matches+=1
-   if checked_boxes[7]:
-      if post.business:
-         matches+=1
-   return matches
-   
 
  
 @login_manager.user_loader
@@ -76,3 +48,61 @@ class Post(db.Model):
    gaming = db.Column(db.Boolean)
    leadership = db.Column(db.Boolean)
    business = db.Column(db.Boolean)
+
+
+def fits_criteria_post(checked_boxes, post):
+   matches = 0
+   if checked_boxes[0]:
+      if post.education:
+         matches+=1
+   if checked_boxes[1]:
+      if post.technology:
+         matches+=1
+   if checked_boxes[2]:
+      if post.mathematics:
+         matches+=1
+   if checked_boxes[3]:
+      if post.health:
+         matches+=1
+   if checked_boxes[4]:
+      if post.sports:
+         matches+=1
+   if checked_boxes[5]:
+      if post.gaming:
+         matches+=1
+   if checked_boxes[6]:
+      if post.leadership:
+         matches+=1
+   if checked_boxes[7]:
+      if post.business:
+         matches+=1
+   return matches
+   
+
+def fits_criteria_user(checked_boxes, user):
+   matches = 0
+   if checked_boxes[0]:
+      if user.education:
+         matches+=1
+   if checked_boxes[1]:
+      if user.technology:
+         matches+=1
+   if checked_boxes[2]:
+      if user.mathematics:
+         matches+=1
+   if checked_boxes[3]:
+      if user.health:
+         matches+=1
+   if checked_boxes[4]:
+      if user.sports:
+         matches+=1
+   if checked_boxes[5]:
+      if user.gaming:
+         matches+=1
+   if checked_boxes[6]:
+      if user.leadership:
+         matches+=1
+   if checked_boxes[7]:
+      if user.business:
+         matches+=1
+   return matches

@@ -1,7 +1,7 @@
 from datetime import datetime
 from flask import render_template, url_for, redirect, flash, request
-from main.forms import RegisterAccount, LogInAccount, UpdateSponsorInfo, UpdateSponseeInfo, PostForm, FilterSponsees, FilterSponsors
-from main.models import User, Post, fits_criteria
+from main.forms import FilterSponsors, RegisterAccount, LogInAccount, UpdateSponsorInfo, UpdateSponseeInfo, PostForm, FilterSponsees
+from main.models import User, Post, fits_criteria_post, fits_criteria_user
 from main import db
 from main import app
 from flask_login import login_user, current_user, logout_user, login_required
@@ -191,11 +191,48 @@ def make_post():
 @app.route("/find_sponsors", methods=['GET', 'POST'])
 @login_required
 def find_sponsors():
-    form=FilterSponsors()
+    form = FilterSponsors()
     all_users = User.query.all()
 
+    if form.validate_on_submit():
+          num_checked = 0
+          checked = [False for i in range(8)]
+          if request.form.get('Education'):
+              checked[0]=True
+              num_checked+=1
+          if request.form.get('Technology'):
+              checked[1]=True
+              num_checked+=1
+          if request.form.get('Mathematics'):
+              checked[2]=True
+              num_checked+=1
+          if request.form.get('Health'):
+              checked[3]=True
+              num_checked+=1
+          if request.form.get('Sports'):
+              checked[4]=True
+              num_checked+=1
+          if request.form.get('Gaming'):
+              checked[5]=True
+              num_checked+=1
+          if request.form.get('Leadership'):
+              checked[6]=True
+              num_checked+=1
+          if request.form.get('Business'):
+              checked[7]=True
+              num_checked+=1
+          
+          if num_checked==0:
+            return render_template('find_sponsors.html', form = form, users = all_users)
+          else:
+            filtered_users = []
+            for i in range(num_checked+1,0,-1):
+                for user in all_users:
+                    if (fits_criteria_user(checked, user)==i):
+                        filtered_users.append(user)
+          return render_template('find_sponsors.html', form = form, users = filtered_users)
 
-    return render_template('find_sponsors.html', users = all_users[::-1], form=form)
+    return render_template('find_sponsors.html', users = all_users[::-1], form = form)
 
 
 @app.route("/find_sponsees", methods=['GET', 'POST'])
@@ -238,6 +275,6 @@ def find_sponsees():
           else:
             filtered_posts = []
             for i in range(num_checked+1,0,-1):
-                filtered_posts.append(post for post in posts if fits_criteria(checked, post)==num_checked)
+                filtered_posts.append(post for post in posts if fits_criteria_post(checked, post)==num_checked)
           return render_template('find_sponsees.html', form = form, posts = filtered_posts)
       return render_template('find_sponsees.html', form = form, posts = sorted_posts)

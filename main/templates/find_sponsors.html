@@ -2,6 +2,8 @@
 {% block content %}
     <h1>Find sponsors for your events!</h1>
     <p> Check out these potential sponsors for ones that fit with your event.</p>
+<form method="POST" action="{{url_for('find_sponsors')}}">
+    {{ form.csrf_token }}    
     <div class="content-section">
       <div class="row" style="vertical-align: middle;">
         <div class="col-11" style="padding-top: 8px;">
@@ -45,6 +47,7 @@
         </div>
       </div>
     </div>
+</form>
     
     {% for user in users %}
     {%if user.user_type == "Sponsor"%}
