@@ -53,3 +53,7 @@ class PostForm(FlaskForm):
 
 class FilterSponsees(FlaskForm):
     submit_filters = SubmitField("Filter")
+
+
+class FilterSponsors(FlaskForm):
+    submit_filters = SubmitField("Filter")

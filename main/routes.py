@@ -1,6 +1,6 @@
 from datetime import datetime
 from flask import render_template, url_for, redirect, flash, request
-from main.forms import RegisterAccount, LogInAccount, UpdateSponsorInfo, UpdateSponseeInfo, PostForm, FilterSponsees
+from main.forms import RegisterAccount, LogInAccount, UpdateSponsorInfo, UpdateSponseeInfo, PostForm, FilterSponsees, FilterSponsors
 from main.models import User, Post, fits_criteria
 from main import db
 from main import app
@@ -191,10 +191,11 @@ def make_post():
 @app.route("/find_sponsors", methods=['GET', 'POST'])
 @login_required
 def find_sponsors():
+    form=FilterSponsors()
     all_users = User.query.all()
 
 
-    return render_template('find_sponsors.html', users = all_users[::-1])
+    return render_template('find_sponsors.html', users = all_users[::-1], form=form)
 
 
 @app.route("/find_sponsees", methods=['GET', 'POST'])
