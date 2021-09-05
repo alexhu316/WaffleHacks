@@ -1,4 +1,4 @@
-## Imports:
+## Installs:
 - wtforms
 - flask
 - flask_login
