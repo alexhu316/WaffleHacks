@@ -1,4 +1,4 @@
-# Second place overall winner in Waffle Hacks 2021
+# Sponify - second place overall winner in Waffle Hacks 2021
 
 
 ## Installs:
