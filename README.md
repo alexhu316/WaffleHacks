@@ -1,5 +1,5 @@
-# Sponify - second place overall winner in Waffle Hacks 2021
-
+# Sponify
+Web app built with Flask where sponsors can connect with organizations.
 
 ## Installs:
 - wtforms
